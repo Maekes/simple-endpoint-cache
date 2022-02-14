@@ -37,7 +37,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	defer mutex.RUnlock()
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(cache)
-
 }
 
 func fetch() {
@@ -59,5 +58,4 @@ func fetch() {
 			log.Println(readErr)
 		}
 	}
-
 }
