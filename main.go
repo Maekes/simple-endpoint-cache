@@ -42,18 +42,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func fetch() {
 
-	client := http.Client{
-		Timeout: time.Second * 20,
-	}
-
-	req, err := http.NewRequest(http.MethodGet, url, nil)
+	res, err := http.Get(url)
 	if err != nil {
-		log.Fatal(err)
-	}
-
-	res, getErr := client.Do(req)
-	if getErr != nil {
-		log.Println(getErr)
+		log.Println(err)
 	}
 
 	if res.Body != nil {
