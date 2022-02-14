@@ -26,11 +26,10 @@ func main() {
 			fetch()
 		}
 	}()
+	fetch()
 
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8080", nil)
-
-	fetch()
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
