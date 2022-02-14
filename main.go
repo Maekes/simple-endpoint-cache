@@ -53,20 +53,20 @@ func fetch() {
 
 	res, getErr := client.Do(req)
 	if getErr != nil {
-		log.Fatal(getErr)
+		log.Println(getErr)
 	}
 
 	if res.Body != nil {
 		defer res.Body.Close()
-	}
 
-	mutex.Lock()
-	defer mutex.Unlock()
+		mutex.Lock()
+		defer mutex.Unlock()
 
-	var readErr error
-	cache, readErr = ioutil.ReadAll(res.Body)
-	if readErr != nil {
-		log.Fatal(readErr)
+		var readErr error
+		cache, readErr = ioutil.ReadAll(res.Body)
+		if readErr != nil {
+			log.Println(readErr)
+		}
 	}
 
 }
